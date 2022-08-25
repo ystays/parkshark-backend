@@ -19,7 +19,7 @@ weatherForm.addEventListener("submit", (e) => {
     const location = search.value
 
     messageOne.textContent = "loading..."
-    messageOne.textContent = ""
+    messageTwo.textContent = ""
 
     if (!isValidAddress(location)) {
         messageOne.textContent = "Invalid input. Please try again."
@@ -30,7 +30,7 @@ weatherForm.addEventListener("submit", (e) => {
             response.json().then((data) => {
                 if (data.error) {
                     messageOne.textContent = data.error
-                    messageOne.textContent = ""
+                    messageTwo.textContent = ""
                 }
                 else {
                     messageOne.textContent = data.location
