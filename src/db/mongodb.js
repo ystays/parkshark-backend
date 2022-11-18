@@ -7,11 +7,6 @@ const Booking = require("../models/booking")
 
 const ObjectId = mongoose.Types.ObjectId
 
-// const schemas = require('../utils/schema.js')
-// const Listing = schemas.Listing
-// const Booking = schemas.Booking
-// const User = schemas.User
-
 const dbUrl = process.env.MONGODB_URL; 
 
 
@@ -25,30 +20,7 @@ mongoose.connect(dbUrl, { useNewUrlParser : true,
 )
 
 // ********************************************************************
-// User API
-// function createUser(userData){
-//     const user = new User(userData);
-//     user.save().then(() => {
-//         console.log("Saved user successfully");
-//     }).catch((error) => {
-//         console.log("Error: ", error);
-//     });
-
-//     return user._id;
-// }
-
-// function queryUser(userId) {
-//     return User.findById(userId);
-// }
-
-// function updateUser(userId) {
-//     return;
-// }  
-
-// function removeUser(userId) {
-//     return;
-// }
-  
+// User API  
 
 function addBookingIdToUser(bookingId, renterId, type) {
     if (type === "renter"){
@@ -75,18 +47,6 @@ function addBookingIdToUser(bookingId, renterId, type) {
 
 // ********************************************************************
 // Listing API
-
-// function createListing(listingData) {
-//     //listingData.userid = new ObjectId(listingData.userid);
-//     const listing = new Listing(listingData);
-//     listing.save().then(() => {
-//         console.log("Saved listing successfully");
-//     }).catch((error) => {
-//         console.log("Error: ", error);
-//     });
-//     return listing._id;
-
-// }
 
 function queryListing(listingId){
     return Listing.findById(listingId);
@@ -170,5 +130,4 @@ function addBooking(bookingData) {
     return booking;
 }
 
-// module.exports = {createUser, queryUser, removeUser, updateUser, addBookingIdToUser, createListing, queryListing, addBookingIdToListing, updateAvailability, addBooking};
 module.exports = {addBookingIdToUser, addBookingIdToListing, updateAvailability, addBooking};
